@@ -12,9 +12,14 @@ class MoviesController < ApplicationController
   end
 
   def create
-    Movie.create(movie_params)
+    @sdmovie = Movie.new(movie_params)
 
-    redirect_to movies_path
+    if @sdmovie.save
+      redirect_to movies_path, notice: "#{@sdmovie.title} was submitted successfully!"
+    else
+      render :new
+    end
+
   end
 
   def edit
@@ -23,10 +28,15 @@ class MoviesController < ApplicationController
 
   def update
     @sdmovie = Movie.find(params[:id])
-    @sdmovie.update(movie_params)
+    @sdmovie.assign_attributes(movie_params)
 
+    if @sdmovie.save
+      redirect_to movies_path, notice: "#{@sdmovie.title} was submitted successfully!"
+    else
     # render :show #only if in same controller
-    redirect_to movies_path
+      render :edit
+    end
+
   end
 
   def destroy

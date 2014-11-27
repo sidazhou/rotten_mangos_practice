@@ -1,4 +1,17 @@
+  <% if zone.errors.any? %>
+    <div>
+    <%= pluralize(zone.errors.count, "error") %> prevented this movie from being submitted:
+      <ul>
+      <% zone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <%= form_for zone do |f| %>
+
+
   <div>
     <%= f.label "titlexxx" %><br>
     <%= f.text_field :title, size: "30x12" %>
@@ -28,4 +41,5 @@
     <%= f.submit "submit" %>
   </div>
 <% end %> 
+
 
