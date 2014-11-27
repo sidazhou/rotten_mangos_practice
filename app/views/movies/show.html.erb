@@ -1,0 +1,10 @@
+<%= link_to "back to home", movies_path %>
+
+<h1>Movies#show</h1>
+<p>Find me in app/views/movies/show.html.erb</p>
+
+<hr>
+<% Movie.column_names.each do |column_name_str| %>
+  <%= "#{column_name_str}:  #{@sdmovie[column_name_str.to_sym]}" %> <br>
+<% end %>
+
