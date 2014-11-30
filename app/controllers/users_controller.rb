@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @sduser = User.new(user_params)
 
     if @sduser.save
-      redirect_to movies_path
+      session[:user_id] = @sduser.id  # auto log in
+      redirect_to movies_path, notice: "Welcome aboard, #{@sduser.firstname}!"
     else
       render :new
     end
