@@ -8,3 +8,16 @@
   <%= "#{column_name_str}:  #{@sdmovie[column_name_str.to_sym]}" %> <br>
 <% end %>
 
+<hr>
+
+<h3>Reviews of <em><%= @sdmovie.title %></em></h3>
+<% if current_user %>
+  <% @sdmovie.reviews.each do |review| %>
+    <p><%= review.text %></p>
+    <p><%= review.rating_out_of_ten %>/10</p>
+    <small>- <%= review.user.email %></small><br/>
+  <% end %>
+  <p><%= link_to "Write a review!", new_movie_review_path(@sdmovie) %></p>
+<% else %>
+  <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
+<% end %>
