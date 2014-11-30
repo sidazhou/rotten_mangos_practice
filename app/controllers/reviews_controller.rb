@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
+  before_filter :load_movie, :restrict_access
+
   def new
-    @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.new
   end
 
   def create
-    @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.build(review_params) # build and are the same?
     @review.user_id = current_user.id
 
@@ -17,8 +17,11 @@ class ReviewsController < ApplicationController
   end
 
   protected
+    def load_movie
+      @movie = Movie.find(params[:movie_id])
+    end
 
-  def review_params
-    params.require(:review).permit(:text, :rating_out_of_ten)
-  end
+    def review_params
+      params.require(:review).permit(:text, :rating_out_of_ten)
+    end
 end

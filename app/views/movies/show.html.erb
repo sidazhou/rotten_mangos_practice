@@ -11,6 +11,8 @@
 <hr>
 
 <h3>Reviews of <em><%= @sdmovie.title %></em></h3>
+<u><b>Avg rating:</b></u> <%=  @sdmovie.review_average %> /10
+
 <% if current_user %>
   <% @sdmovie.reviews.each do |review| %>
     <p><%= review.text %></p>
