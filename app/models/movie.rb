@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  
   # validates :title,
   #   presence: true
 
@@ -20,6 +21,8 @@ class Movie < ActiveRecord::Base
   # validate :release_date_is_in_the_future
 
   has_many :reviews
+  mount_uploader :image, ImageUploader
+  # attr_accessible :image, :remote_image_url
 
   def review_average
     if reviews.size > 0
@@ -29,8 +32,8 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  attr_accessible :image, :remote_image_url
-  mount_uploader :image, ImageUploader
+
+
 
   protected
 
