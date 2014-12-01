@@ -22,7 +22,10 @@ class Movie < ActiveRecord::Base
 
   has_many :reviews
   mount_uploader :image, ImageUploader
-  # attr_accessible :image, :remote_image_url
+
+  # scope :created_before, ->(time) { where("created_at < ?", time) }
+  scope :sd_pagination, ->(params_pages,num) { page(params_pages).per(num) }
+
 
   def review_average
     if reviews.size > 0
@@ -32,16 +35,12 @@ class Movie < ActiveRecord::Base
     end
   end
 
-
-
-
   protected
-
-  def release_date_is_in_the_future
-    if release_date.present?
-      errors.add(:release_date, "should probably be in the future") if release_date < Date.today
+    def release_date_is_in_the_future
+      if release_date.present?
+        errors.add(:release_date, "should probably be in the future") if release_date < Date.today
+      end
     end
-  end
     
 end
 

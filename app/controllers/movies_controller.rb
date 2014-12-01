@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
       @all_movies = Movie.where(title: params[:searched_str]).page(params[:page]).per(5)
 
     else 
-      @all_movies = Movie.all.page(params[:page]).per(5)
+      @all_movies = Movie.all.sd_pagination(params[:page],5)
     end
 
   end
