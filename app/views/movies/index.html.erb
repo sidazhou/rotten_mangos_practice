@@ -4,10 +4,13 @@
 <%= link_to "Submit a movie!", new_movie_path %> <br>
 
 <% if current_user && current_user.admin %>
-  <%= link_to "view all users", admin_users_path %>
+  <%= link_to "view all users", admin_users_path %> <br>
 <% end %>
 
 <hr>
+<%= paginate @all_movies %>
+<hr>
+
 <% @all_movies.each do |movie| %>
   <%# link_to image_tag(movie.poster_image_url), movie_path(movie) %>
   <%= image_tag movie.image_url(:thumb) if movie.image? %>

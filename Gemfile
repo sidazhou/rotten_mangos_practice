@@ -30,6 +30,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "carrierwave"
 gem "rmagick"
+
+# http://railscasts.com/episodes/254-pagination-with-kaminari
+gem 'kaminari'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

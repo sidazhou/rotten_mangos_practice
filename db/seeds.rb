@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-for i in (1..3)
+for i in (1..10)
 Movie.create(title: "title#{i}", director: "director#{i}", 
   runtime_in_minutes: i, 
   description: "#{i}+#{i}+#{i}+#{i}+#{i}", 
