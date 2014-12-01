@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
-
+  
   root to: 'movies#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

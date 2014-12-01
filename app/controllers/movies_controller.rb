@@ -1,6 +1,12 @@
 class MoviesController < ApplicationController
   def index
-    @all_movies = Movie.all.page(params[:page]).per(5)
+    # FOR IMPROVEMENTS: http://stackoverflow.com/questions/19105706/rails-4-like-query-activerecord-adds-quotes
+    if params[:searched_str] && !params[:searched_str].empty?
+      @all_movies = Movie.where(title: params[:searched_str]).page(params[:page]).per(5)
+
+    else 
+      @all_movies = Movie.all.page(params[:page]).per(5)
+    end
 
   end
 
