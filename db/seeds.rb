@@ -13,3 +13,8 @@ Movie.create(title: "title#{i}", director: "director#{i}",
   release_date: Time.now.to_s(:db)
 )
 end
+
+User.create(email: "q@q", password: "q", firstname: "q", lastname: "q", admin: true)
+User.create(email: "w@w", password: "w", firstname: "w", lastname: "w")
+
+

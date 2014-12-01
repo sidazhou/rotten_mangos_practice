@@ -14,8 +14,10 @@
   <%# link_to "details", "/#{movie.class.to_s.downcase.pluralize}/#{movie.id}" %>
 
   <%= link_to "edit", edit_movie_path(movie) %>
-
-  <%= link_to "delete", movie_path(movie), method: :delete %>
+  
+  <% if current_user && current_user.admin %>
+    <%= link_to "delete", movie_path(movie), method: :delete %>
+  <% end %>
   <hr>
   
 <% end %>
