@@ -1,0 +1,10 @@
+<h1>Admin panel</h1>
+
+<hr>
+<% @users.each do |user| %>
+
+  <p><b><%= user.full_name %></b></p>
+  <p><%= user.password_digest %></p>
+  <hr>
+  
+<% end %>

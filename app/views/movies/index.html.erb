@@ -1,7 +1,12 @@
 
 
 <h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
+<%= link_to "Submit a movie!", new_movie_path %> <br>
+
+<% if current_user && current_user.admin %>
+  <%= link_to "view all users", admin_users_path %>
+<% end %>
+
 <hr>
 <% @all_movies.each do |movie| %>
   <%# link_to image_tag(movie.poster_image_url), movie_path(movie) %>
